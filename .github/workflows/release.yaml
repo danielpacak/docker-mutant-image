@@ -19,7 +19,7 @@ jobs:
           echo ${{ secrets.DOCKERHUB_TOKEN }} | docker login docker.io --username ${{ secrets.DOCKERHUB_USER }} --password-stdin
       - name: Release
         run: |
-          docker image build danielpacak/docker-mutant-image:1.0 .
+          docker image build -t danielpacak/docker-mutant-image:1.0 .
           docker image push danielpacak/docker-mutant-image:1.0
       - name: Log out from docker.io registry
         if: ${{ always() }}
